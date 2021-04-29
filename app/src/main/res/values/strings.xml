@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RoomDatabaseExample</string>
+    <string name="username">Name</string>
+    <string name="semicolon">:</string>
+    <string name="usersurname">Surname</string>
+    <string name="address">Address</string>
+    <string name="fetch_user_details">FETCH USER DETAILS</string>
+    <string name="fetch_contact_list">FETCH CONTACT LIST</string>
+    <string name="fetch_api_data">FETCH API DATA</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="number">Number</string>
+</resources>

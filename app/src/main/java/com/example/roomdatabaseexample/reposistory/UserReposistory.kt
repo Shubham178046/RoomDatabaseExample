@@ -2,6 +2,7 @@ package com.example.roomdatabaseexample.reposistory
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.example.roomdatabaseexample.model.UserModel
 import com.example.roomdatabaseexample.room.user.UserDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -12,13 +13,13 @@ class UserReposistory {
     companion object {
         var userDatabase: UserDatabase? = null
 
-        var userModel: LiveData<List<UserModel>>? = null
+        var userModel: DataSource.Factory<Int, UserModel>? = null
 
         fun initializeDB(context: Context): UserDatabase {
             return UserDatabase.getUserClient(context)
         }
 
-        fun insertData(
+       /* fun insertData(
             context: Context,
             username: String,
             userSurname: String,
@@ -29,9 +30,9 @@ class UserReposistory {
                 val userDataModel = UserModel(username, userSurname, userAddress)
                 userDatabase!!.userDao().InsertUserData(userDataModel)
             }
-        }
+        }*/
 
-        fun getUserData(context: Context): LiveData<List<UserModel>> {
+        fun getUserData(context: Context): DataSource.Factory<Int, UserModel> {
             userDatabase = initializeDB(context)
             userModel = userDatabase!!.userDao().getUserData()
             return userModel!!

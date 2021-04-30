@@ -18,7 +18,7 @@ class ContactReposistory {
             return ContactDatabase.getContactClient(context)
         }
 
-        fun insertData(
+       /* fun insertData(
             context: Context,
             id : String,
             name : String,
@@ -29,7 +29,7 @@ class ContactReposistory {
                 val conatactDataModel = ContactModel(id, name, number)
                 conatactDatabase!!.contactDao().InsertContactData(conatactDataModel)
             }
-        }
+        }*/
 
         fun getContactData(context: Context): LiveData<List<ContactModel>> {
             conatactDatabase = initializeDB(context)

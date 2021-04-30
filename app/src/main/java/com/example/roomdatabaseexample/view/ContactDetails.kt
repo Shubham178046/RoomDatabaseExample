@@ -36,7 +36,6 @@ class ContactDetails : AppCompatActivity() {
         adapter = ContactAdapter()
         rvContact.layoutManager = LinearLayoutManager(this)
         rvContact.adapter = adapter
-        contactViewMOdel!!.clearContactData(this)
         loadContacts()
     }
 
@@ -46,11 +45,11 @@ class ContactDetails : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions(
-                arrayOf(Manifest.permission.READ_CONTACTS),
+                arrayOf(Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS),
                 PERMISSIONS_REQUEST_READ_CONTACTS
             )
         } else {
-            getContacts()
+            // getContacts()
             contactViewMOdel!!.getContactData(this).observe(this, Observer {
                 if (it != null) {
                     if (it.size > 0) {
@@ -74,54 +73,54 @@ class ContactDetails : AppCompatActivity() {
         }
     }
 
-    private fun getContacts() {
-        val builder = StringBuilder()
-        var contactModels = MutableLiveData<List<ContactModel>>()
-        var contactModel: ArrayList<ContactModel> = ArrayList()
-        val resolver: ContentResolver = contentResolver;
-        val cursor = resolver.query(
-            ContactsContract.Contacts.CONTENT_URI, null, null, null,
-            null
-        )
+    /* private fun getContacts() {
+         val builder = StringBuilder()
+         var contactModels = MutableLiveData<List<ContactModel>>()
+         var contactModel: ArrayList<ContactModel> = ArrayList()
+         val resolver: ContentResolver = contentResolver;
+         val cursor = resolver.query(
+             ContactsContract.Contacts.CONTENT_URI, null, null, null,
+             null
+         )
 
-        if (cursor!!.count > 0) {
-            while (cursor.moveToNext()) {
-                val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                val name =
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                val phoneNumber = (cursor.getString(
-                    cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)
-                )).toInt()
+         if (cursor!!.count > 0) {
+             while (cursor.moveToNext()) {
+                 val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                 val name =
+                     cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                 val phoneNumber = (cursor.getString(
+                     cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)
+                 )).toInt()
 
-                if (phoneNumber > 0) {
-                    val cursorPhone = contentResolver.query(
-                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                        null,
-                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?",
-                        arrayOf(id),
-                        null
-                    )
+                 if (phoneNumber > 0) {
+                     val cursorPhone = contentResolver.query(
+                         ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                         null,
+                         ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?",
+                         arrayOf(id),
+                         null
+                     )
 
-                    if (cursorPhone!!.count > 0) {
-                        while (cursorPhone.moveToNext()) {
-                            val phoneNumValue = cursorPhone.getString(
-                                cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                            )
-                            builder.append("Contact: ").append(name).append(", Phone Number: ")
-                                .append(
-                                    phoneNumValue
-                                ).append("\n\n")
-                            contactViewMOdel!!.insertData(this, id, name, phoneNumValue)
-                            Log.e("Name ===>", phoneNumValue);
-                        }
-                    }
-                    cursorPhone.close()
-                    contactModels.postValue(contactModel)
-                }
-            }
-        } else {
-            Toast.makeText(this, "No contacts available!", Toast.LENGTH_LONG).show()
-        }
-        cursor.close()
-    }
+                     if (cursorPhone!!.count > 0) {
+                         while (cursorPhone.moveToNext()) {
+                             val phoneNumValue = cursorPhone.getString(
+                                 cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                             )
+                             builder.append("Contact: ").append(name).append(", Phone Number: ")
+                                 .append(
+                                     phoneNumValue
+                                 ).append("\n\n")
+                             contactViewMOdel!!.insertData(this, id, name, phoneNumValue)
+                             Log.e("Name ===>", phoneNumValue);
+                         }
+                     }
+                     cursorPhone.close()
+                     contactModels.postValue(contactModel)
+                 }
+             }
+         } else {
+             Toast.makeText(this, "No contacts available!", Toast.LENGTH_LONG).show()
+         }
+         cursor.close()
+     }*/
 }

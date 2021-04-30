@@ -74,4 +74,11 @@ dependencies {
 
     //coroutinr
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+
+    //WorkManager
+    def work_version = "2.5.0"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // PAging
+    implementation "android.arch.paging:runtime:1.0.1"
 }

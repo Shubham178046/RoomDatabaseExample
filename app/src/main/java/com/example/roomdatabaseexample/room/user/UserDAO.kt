@@ -1,6 +1,7 @@
 package com.example.roomdatabaseexample.room.user
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -10,10 +11,13 @@ import com.example.roomdatabaseexample.model.UserModel
 @Dao
 interface UserDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun InsertUserData(userModel: UserModel)
+     fun InsertUserData(userModel: UserModel)
+
+   /* @Query("SELECT * FROM User")
+    fun getUserData(): LiveData<List<UserModel>> */
 
     @Query("SELECT * FROM User")
-    fun getUserData(): LiveData<List<UserModel>>
+    fun getUserData(): DataSource.Factory<Int, UserModel>
 
     @Query("DELETE FROM User")
     fun clearUserData()

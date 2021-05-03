@@ -19,7 +19,7 @@ class UserReposistory {
             return UserDatabase.getUserClient(context)
         }
 
-       /* fun insertData(
+        fun insertData(
             context: Context,
             username: String,
             userSurname: String,
@@ -30,7 +30,7 @@ class UserReposistory {
                 val userDataModel = UserModel(username, userSurname, userAddress)
                 userDatabase!!.userDao().InsertUserData(userDataModel)
             }
-        }*/
+        }
 
         fun getUserData(context: Context): DataSource.Factory<Int, UserModel> {
             userDatabase = initializeDB(context)

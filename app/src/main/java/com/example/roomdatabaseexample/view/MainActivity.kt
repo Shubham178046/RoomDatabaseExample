@@ -19,5 +19,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ContactDetails::class.java)
             startActivity(intent)
         }
+
+        button2.setOnClickListener {
+            val intent = Intent(this, MoviesActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

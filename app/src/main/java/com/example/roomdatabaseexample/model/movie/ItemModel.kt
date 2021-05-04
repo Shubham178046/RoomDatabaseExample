@@ -1,6 +1,8 @@
 package com.example.roomdatabaseexample.model.movie
 
-open class ItemModel {
+import java.io.Serializable
+
+open class ItemModel : Serializable {
     var adult: Boolean? = null
     var backdrop_path: String? = ""
     var media_type: String? = ""

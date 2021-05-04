@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdatabaseexample.R
 import com.example.roomdatabaseexample.model.movie.CategoryModel
+import com.example.roomdatabaseexample.view.MoviesActivity
 import kotlinx.android.synthetic.main.priv_layout_vertical.view.*
 
-class MovieVerticalAdapter(var context: Context, var categoryList: List<CategoryModel>) :
+class MovieVerticalAdapter(var context: MoviesActivity, var categoryList: List<CategoryModel>) :
     RecyclerView.Adapter<MovieVerticalAdapter.MovieVerticalViewHolder>() {
     class MovieVerticalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(itemModel: CategoryModel) {
+        fun bind(itemModel: CategoryModel,context: MoviesActivity) {
             itemView.categoryText.setText(itemModel.categoryTitle)
-            val adapter = MovieHorizontalAdapter(itemView.context, itemModel.movieList!!)
+            val adapter = MovieHorizontalAdapter(context, itemModel.movieList!!)
             itemView.horizontalRecyclerview.layoutManager =
                 LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
             itemView.horizontalRecyclerview.adapter = adapter
-
         }
     }
 
@@ -31,7 +31,7 @@ class MovieVerticalAdapter(var context: Context, var categoryList: List<Category
     }
 
     override fun onBindViewHolder(holder: MovieVerticalViewHolder, position: Int) {
-        holder.bind(categoryList.get(position))
+        holder.bind(categoryList.get(position),context)
         if (position == categoryList.size - 1) holder.itemView.Linear.setPadding(
             0,
             0,

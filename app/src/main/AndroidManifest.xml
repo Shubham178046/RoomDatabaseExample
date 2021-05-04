@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabaseExample"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MoviesActivity"></activity>
+        <activity android:name=".view.MovieDetailsActivity"></activity>
+        <activity android:name=".view.MoviesActivity" />
         <activity android:name=".view.ContactDetails" />
         <activity android:name=".view.UserDetails" />
         <activity android:name=".view.MainActivity">

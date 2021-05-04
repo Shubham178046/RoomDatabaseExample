@@ -18,6 +18,7 @@
             android:background="@color/black_tn"
             android:layout_width="100dp"
             android:layout_height="150dp"
+            android:transitionName="image"
             android:scaleType="centerCrop"/>
 
         <ProgressBar

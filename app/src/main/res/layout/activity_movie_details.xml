@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/black_tn"
+    android:layout_height="match_parent"
+    tools:context=".view.MovieDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/movieFocusImg"
+                android:layout_width="360dp"
+                android:layout_height="150dp"
+                android:transitionName="image"
+                android:background="@color/black_tn"
+                android:scaleType="fitXY"
+                android:src="@drawable/anonim" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/FocusTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:maxWidth="300dp"
+            android:text="Movie Title"
+            android:textColor="@color/orange_tn"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <TextView
+            android:id="@+id/FocusDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:drawableLeft="@drawable/ic_time"
+            android:drawablePadding="6dip"
+            android:gravity="center"
+            android:text="04.02.2017"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/FocusTitle"
+            app:layout_constraintTop_toBottomOf="@+id/FocusTitle" />
+
+        <TextView
+            android:id="@+id/FocusLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:drawableLeft="@drawable/ic_language"
+            android:drawablePadding="6dip"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:text="En"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/FocusDate"
+            app:layout_constraintTop_toBottomOf="@+id/FocusTitle" />
+
+        <TextView
+            android:id="@+id/FocusImdb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:drawableLeft="@drawable/mdb"
+            android:drawablePadding="6dip"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:text="7.5"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/FocusLanguage"
+            app:layout_constraintTop_toBottomOf="@+id/FocusTitle" />
+
+        <TextView
+            android:id="@+id/OverView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:scrollbars="vertical"
+            android:text="Demo"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/FocusDate"
+            app:layout_constraintTop_toBottomOf="@+id/FocusDate" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
